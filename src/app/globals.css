@@ -1,0 +1,4105 @@
+@import "tailwindcss";
+
+/* next/font (see app/layout.tsx) exposes the two design fonts as CSS
+   variables; --font-newsletter is what every rule below asks for. */
+@theme inline {
+  --font-sans: var(--font-poppins);
+}
+
+:root {
+  --font-newsletter: var(--font-poppins), var(--font-noto-devanagari), sans-serif;
+}
+
+/* Tailwind's preflight resets a few defaults the newsletter design relies on.
+   Restore only those. */
+.daily-summary ul {
+    list-style: disc;
+}
+
+.top-podcast-copy h2 {
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.story-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+}
+
+.story-author i {
+    font-size: 11px;
+    color: #d91f26;
+}
+
+:root {
+    --red: #d91f26;
+    --dark-red: #c81920;
+    --black: #111317;
+    --gray: #666;
+    --light-gray: #e7e1dc;
+    --cream: #f7f3ee;
+    --soft-red: #fff2f0;
+    --white: #ffffff;
+
+    /* shared top/bottom gap for every section heading */
+    --heading-space-top: 14px;
+    --heading-space-bottom: 8px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: var(--cream);
+
+    color: #111;
+
+    font-family: var(--font-newsletter);
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+    width: 100%;
+
+    padding: 30px 15px;
+}
+
+
+.newsletter {
+
+    width: 100%;
+
+    font-family: var(--font-newsletter);
+
+    max-width: 600px;
+
+    margin: auto;
+
+    background: white;
+
+    overflow: hidden;
+
+    border: 1px solid #eeeeee;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.masthead {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px 36px 18px;
+}
+
+
+.brand {
+    display: block;
+    text-align: center;
+}
+
+
+/* .logo {
+
+    display: inline-block;
+
+    color: var(--red);
+
+    border: 5px solid var(--red);
+
+    padding: 0 5px;
+
+    font-family: var(--font-newsletter);
+
+    font-size: 45px;
+
+    line-height: 40px;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+} */
+
+/* .nbt-logo {
+    display: block;
+
+    width: 125px;
+    height: auto;
+
+    margin: 0 auto 10px;
+} */
+.header-logo img {
+    display: block;
+
+    width: 130px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+.reader-greeting {
+    margin-top: 18px;
+    padding: 0 36px 12px;
+    color: var(--red);
+    font-size: 18px;
+    font-weight: 800;
+    text-align: left;
+}
+
+
+.daily-summary {
+    margin: 0 36px 18px;
+    padding: 16px 20px 14px;
+    border: 2px solid var(--red);
+    border-radius: 4px;
+    background: var(--soft-red);
+}
+
+
+.daily-summary h2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin: 0 0 8px;
+    color: var(--red);
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+
+.daily-summary h2 svg {
+    flex: none;
+
+    font-size: 18px;
+}
+
+
+.daily-summary ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+
+.daily-summary li {
+    padding: 3px 0;
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+
+.newsletter-bar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding:
+        var(--heading-space-top)
+        36px
+        var(--heading-space-bottom);
+}
+
+
+.top-story-heading {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+.newsletter-title {
+/* 
+    margin: 0;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    font-weight: 900; */
+    margin-top: 6px;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    text-align: left;
+}
+
+
+.newsletter-date {
+
+    color: var(--gray);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.header-date {
+    padding: 0 36px 10px;
+    text-align: right;
+}
+
+
+.tagline {
+
+    margin-top: 8px;
+
+    color: var(--red);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.meta {
+
+    padding-top: 6px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 2;
+}
+
+
+.meta-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.meta-icon {
+
+    font-size: 19px;
+}
+
+
+
+/* =========================================
+   RED LINE
+========================================= */
+
+.red-line {
+
+    height: 3px;
+
+    background: var(--red);
+
+    margin: 0 36px;
+}
+
+
+
+/* =========================================
+   GREETING
+========================================= */
+
+.greeting {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding:
+        22px
+        36px;
+}
+
+
+.user-avatar {
+
+    width: 60px;
+
+    height: 60px;
+
+    min-width: 60px;
+
+    border: 1.8px solid var(--red);
+
+    border-radius: 50%;
+
+    position: relative;
+}
+
+
+.avatar-head {
+
+    width: 15px;
+
+    height: 15px;
+
+    background: var(--red);
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 21px;
+}
+
+
+.avatar-body {
+
+    width: 30px;
+
+    height: 17px;
+
+    background: var(--red);
+
+    border-radius:
+        18px
+        18px
+        5px
+        5px;
+
+    position: absolute;
+
+    left: 14px;
+
+    bottom: 12px;
+}
+
+
+.greeting-content {
+
+    flex: 1;
+}
+
+
+.greeting-content h2 {
+
+    margin: 0 0 5px;
+
+    font-size: 23px;
+
+    font-weight: 800;
+}
+
+
+.greeting-content p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+
+/* preference */
+
+.preference-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 185px;
+
+    padding:
+        12px
+        18px;
+
+    background: var(--soft-red);
+
+    border-radius: 9px;
+}
+
+
+.preference-heart {
+
+    color: var(--red);
+
+    font-size: 38px;
+
+    line-height: 1;
+}
+
+
+.preference-box span {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.preference-box strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--red);
+
+    font-size: 17px;
+}
+
+
+
+/* =========================================
+   TOPIC BANNER
+========================================= */
+
+.topic-banner {
+
+    height: 180px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            110deg,
+            #080c11,
+            #0a1017
+        );
+
+    color: white;
+}
+
+
+.topic-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    padding:
+        27px
+        25px;
+}
+
+
+.topic-label {
+
+    color: #ff3035;
+
+    font-family: var(--font-newsletter);
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.topic-content h1 {
+
+    margin: 12px 0 0;
+
+    font-size: 36px;
+
+    line-height: 1.17;
+
+    font-weight: 900;
+}
+
+
+
+/* circuit */
+
+.circuit-background {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 0;
+
+    width: 52%;
+
+    height: 100%;
+
+    opacity: .85;
+}
+
+
+.circuit-line {
+
+    position: absolute;
+
+    height: 2px;
+
+    background: #0c7094;
+
+    transform-origin: left center;
+}
+
+
+.line-1 {
+    width: 320px;
+    top: 42px;
+    left: 10px;
+    transform: rotate(-17deg);
+}
+
+
+.line-2 {
+    width: 300px;
+    top: 80px;
+    left: 35px;
+    transform: rotate(13deg);
+}
+
+
+.line-3 {
+    width: 260px;
+    top: 120px;
+    left: 20px;
+    transform: rotate(-8deg);
+}
+
+
+.line-4 {
+    width: 220px;
+    top: 155px;
+    left: 75px;
+    transform: rotate(14deg);
+}
+
+
+.circuit-dot {
+
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ef252c;
+
+    box-shadow:
+        0 0 12px #ef252c;
+}
+
+
+.dot-1 {
+    top: 40px;
+    right: 90px;
+}
+
+
+.dot-2 {
+    top: 82px;
+    right: 155px;
+}
+
+
+.dot-3 {
+    top: 118px;
+    right: 65px;
+}
+
+
+.dot-4 {
+    top: 148px;
+    right: 130px;
+}
+
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 0;
+
+    margin-top: 0;
+
+    padding:
+        0
+        25px
+        18px;
+
+    border-bottom: 1px solid #e6e1dc;
+}
+
+
+.section-label {
+
+    color: var(--red);
+
+    font-family: var(--font-newsletter);
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+.hero-text h2 {
+
+    margin: 10px 0 0;
+
+    font-size: 25px;
+
+    line-height: 1.35;
+
+    font-weight: 900;
+}
+
+
+.hero-text p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 4;
+
+    line-clamp: 4;
+}
+
+
+.hero-section .story-author {
+
+    margin: 0 0 6px;
+}
+
+
+.hero-text {
+
+    display: contents;
+}
+
+
+.red-link {
+
+    color: var(--red);
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.hero-image-wrapper {
+
+    width: 100%;
+}
+
+
+.hero-image {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+
+.top-podcast {
+
+    margin:
+        0
+        25px;
+
+    padding:
+        var(--heading-space-top)
+        0
+        14px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #e6e1dc;
+
+    background: #ffffff;
+}
+
+
+.top-podcast-media {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #111111;
+}
+
+
+.top-podcast-thumb {
+
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+    border: 0;
+}
+
+
+.top-podcast-play {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 64px;
+
+    height: 44px;
+
+    border-radius: 10px;
+
+    background: rgba(204, 0, 0, 0.92);
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    line-height: 44px;
+
+    text-align: center;
+}
+
+
+.top-podcast-duration {
+
+    position: absolute;
+
+    right: 10px;
+
+    bottom: 10px;
+
+    padding: 2px 6px;
+
+    border-radius: 4px;
+
+    background: rgba(0, 0, 0, 0.78);
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.top-podcast-duration:empty {
+
+    display: none;
+}
+
+
+.top-podcast-copy {
+
+    padding-top: 12px;
+}
+
+
+.top-podcast-label {
+
+    margin:
+        0
+        0
+        var(--heading-space-bottom);
+
+    color: var(--red);
+    font-size: 18px;
+    /* font-weight: 800; */
+    font-weight: 800;
+    /* text-transform: uppercase; */
+    font-family: var(--font-newsletter);
+}
+
+
+.top-podcast-copy h2 {
+
+    margin: 4px 0 0;
+
+    font-size: 15px;
+
+    line-height: 1.35;
+}
+
+
+
+/* =========================================
+   WHY SECTION
+========================================= */
+
+.why-section {
+
+    display: grid;
+
+    grid-template-columns:
+        1.15fr
+        1fr
+        1fr
+        1fr;
+
+    margin:
+        0
+        25px
+        18px;
+
+    border:
+        1px
+        solid
+        #efd0cb;
+
+    background: #fff8f7;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.why-title,
+.why-item {
+
+    padding: 17px 15px;
+
+    border-right:
+        1px
+        solid
+        #f0d8d4;
+}
+
+
+.why-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.why-title strong {
+
+    display: block;
+
+    font-size: 16px;
+
+    line-height: 1.35;
+}
+
+
+.bulb-circle {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    color: white;
+
+    font-size: 21px;
+}
+
+
+.why-item {
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+.why-item:last-child {
+
+    border-right: 0;
+}
+
+
+.why-icon {
+
+    color: var(--red);
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+
+.why-item p {
+
+    margin: 0;
+}
+
+
+
+/* =========================================
+   CURATED SECTION
+========================================= */
+
+.selected-news {
+
+    border-top: 1px solid var(--light-gray);
+
+    padding:
+        0
+        25px
+        20px;
+}
+
+
+.selected-news .heading-wrapper h4,
+.feedback-section .heading-wrapper h4 {
+
+    color: var(--red);
+    font-size: 18px;
+    font-weight: 800;
+    font-family: var(--font-newsletter);
+}
+
+
+.selected-news .heading-wrapper h4 {
+
+    margin:
+        var(--heading-space-top)
+        0
+        var(--heading-space-bottom);
+}
+
+
+
+.heading-wrapper h4 {
+
+    margin:
+        10px
+        0
+        10px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+
+/* news grid */
+
+.news-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+}
+
+
+.news-card {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid #e7e1dc;
+}
+
+
+.news-card img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    height: auto;
+
+    object-fit: cover;
+
+    border-radius: 4px;
+
+    margin-bottom: 14px;
+}
+
+
+.news-content {
+
+    width: 100%;
+}
+
+
+.category {
+
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+
+.news-card h3 {
+
+    margin: 0 0 8px;
+
+    color: var(--black);
+
+    font-size: 26px;
+
+    line-height: 1.4;
+
+    font-weight: 800;
+}
+
+
+.news-content p {
+
+    margin: 0;
+
+    color: var(--black);
+
+    font-size: 16px;
+
+    line-height: 1.65;
+}
+
+
+.news-description {
+
+    margin: 0 0 8px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.news-content .story-author {
+
+    margin: 0 0 4px;
+}
+
+
+.news-content .reading-time {
+
+    margin-top: 8px;
+}
+
+/* 
+.reading-time {
+
+    color: #777;
+
+    font-size: 10px;
+}
+
+
+.card-link {
+
+    display: block;
+
+    margin-top: 8px;
+
+    padding-top: 6px;
+
+    border-top:
+        1px
+        solid
+        #f0d8d4;
+
+    color: var(--red);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    text-decoration: underline;
+} */
+
+
+.story-author {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+}
+
+.story-author i {
+    font-size: 10px;
+    color: #d91f26;
+}
+
+.card-description {
+    margin: 0 0 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.reading-time {
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.card-link {
+    color: #d91f26;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#todays-selected-news .news-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+#todays-selected-news .news-card h3 {
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.35;
+}
+
+#todays-selected-news .news-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+#todays-selected-news .card-link {
+    display: inline-block;
+    margin-top: 0;
+}
+
+#past-24-hours-news .news-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+#past-24-hours-news .news-card h3 {
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.35;
+}
+
+#past-24-hours-news .news-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+#past-24-hours-news .card-link {
+    display: inline-block;
+    margin-top: 0;
+}
+
+
+
+/* more button */
+
+.more-news {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    border:
+        1.5px
+        solid
+        var(--red);
+
+    border-radius: 6px;
+}
+
+
+.more-news a {
+
+    display: block;
+
+    padding:
+        8px
+        16px;
+
+    color: var(--red);
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.more-news span {
+
+    margin-left: 8px;
+
+    font-size: 17px;
+}
+
+
+
+/* =========================================
+   RECOMMENDATION
+========================================= */
+
+.recommendation {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin:
+        0
+        25px
+        16px;
+
+    padding: 12px;
+
+    background: #fff7ea;
+
+    border:
+        1px
+        solid
+        #efd8bb;
+
+    border-radius: 10px;
+}
+
+
+.bookmark {
+
+    width: 50px;
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--red);
+
+    color: white;
+
+    border-radius: 5px;
+
+    font-size: 27px;
+}
+
+
+.recommendation-text {
+
+    min-width: 190px;
+}
+
+
+.recommendation-text strong {
+
+    display: block;
+
+    font-size: 16px;
+}
+
+
+.recommendation-text span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+}
+
+
+.topic-chips {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-left: auto;
+}
+
+
+.topic-chips span {
+
+    padding:
+        6px
+        10px;
+
+    border:
+        1px
+        solid
+        #e3d7cb;
+
+    border-radius: 6px;
+
+    background: white;
+
+    font-size: 11px;
+}
+
+
+
+/* =========================================
+   INSIGHT SECTION
+========================================= */
+
+.insight-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    border-top:
+        1px
+        solid
+        #e5dfda;
+
+    border-bottom:
+        1px
+        solid
+        #e5dfda;
+}
+
+
+.expert-section,
+.feedback-section {
+
+    padding:
+        0
+        25px
+        20px;
+}
+
+
+.feedback-section {
+
+    border-left:
+        1px
+        solid
+        #e5dfda;
+}
+
+
+.expert-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.expert-image {
+
+    width: 78px;
+
+    height: 78px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+
+.quote {
+
+    color: var(--red);
+
+    font-family: var(--font-newsletter);
+
+    font-size: 52px;
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+
+.expert-text p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+.expert-text strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+}
+
+
+.expert-text span {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 9px;
+}
+
+
+.expert-link {
+
+    display: block;
+
+    margin:
+        13px
+        0
+        0
+        88px;
+
+    color: var(--red);
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+.hook-box {
+
+    margin-top: 28px;
+
+    padding: 24px 26px;
+
+    background: #fff2f0;
+
+    border: 1px solid #ead8d4;
+
+    border-radius: 6px;
+}
+
+
+.hook-label {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.hook-question {
+
+    margin: 0 0 20px;
+
+    color: var(--black);
+
+    font-size: 20px;
+
+    line-height: 1.45;
+
+    font-weight: 800;
+}
+
+
+.poll-options {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.poll-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 14px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #222;
+
+    transition: all 0.2s ease;
+}
+
+
+.poll-option:hover,
+.poll-option.selected {
+
+    border-color: var(--red);
+}
+
+
+.poll-icon {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+}
+
+
+.poll-icon.yes {
+
+    color: #2e8b57;
+
+    border: 1px solid #2e8b57;
+}
+
+
+.poll-icon.no {
+
+    color: var(--red);
+
+    border: 1px solid var(--red);
+}
+
+
+.poll-icon.maybe {
+
+    color: #d69e00;
+
+    border: 1px solid #d69e00;
+}
+
+
+/* --- Live NBT poll result state (revealed after a reader answers) --- */
+
+.poll-options.voted .poll-option {
+
+    min-width: 190px;
+}
+
+
+.poll-option {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Vote share, painted behind the label. */
+.poll-bar {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    background: #ffe2dd;
+
+    transition: width 0.45s ease;
+
+    z-index: 0;
+}
+
+
+.poll-option.selected .poll-bar {
+
+    background: #ffd0c8;
+}
+
+
+.poll-icon,
+.poll-label,
+.poll-percent {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.poll-label {
+
+    flex: 1;
+}
+
+
+.poll-percent {
+
+    margin-left: auto;
+
+    padding-left: 10px;
+
+    color: var(--red);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+.poll-option:disabled {
+
+    opacity: 0.75;
+
+    cursor: progress;
+}
+
+
+.feedback-section > p {
+
+    margin:
+        0
+        0
+        15px;
+
+    font-size: 12px;
+}
+
+
+
+/* updated */
+.feedback-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0 18px;
+}
+
+.rating-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.rating-face {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border: 2px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: #fff;
+}
+.rating-item:nth-child(1) .rating-face {
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.rating-item:nth-child(2) .rating-face {
+    color: #8BC34A;
+    border-color: #8BC34A;
+}
+
+.rating-item:nth-child(3) .rating-face {
+    color: #FFC107;
+    border-color: #FFC107;
+}
+
+.rating-item:nth-child(4) .rating-face {
+    color: #FF9800;
+    border-color: #FF9800;
+}
+
+.rating-item:nth-child(5) .rating-face {
+    color: #F44336;
+    border-color: #F44336;
+}
+.rating-face i {
+    font-size: 21px;
+}
+
+.rating-label {
+    max-width: 58px;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+}
+/* --------------------------------------------- */
+
+
+.ratings {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin:
+        10px
+        0
+        18px;
+}
+
+
+.ratings button {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 26px;
+
+    transition:
+        transform
+        .2s
+        ease;
+}
+
+
+.ratings button:hover {
+
+    transform: scale(1.12);
+}
+
+
+.ratings button.active {
+
+    transform: scale(1.2);
+}
+
+
+.ratings button span {
+
+    max-width: 52px;
+
+    color: #666;
+
+    text-align: center;
+
+    font-size: 8px;
+
+    line-height: 1.2;
+}
+
+
+.feedback-button {
+
+    display: block;
+
+    margin: auto;
+
+    padding:
+        8px
+        28px;
+
+    border:
+        1.5px
+        solid
+        var(--red);
+
+    border-radius: 6px;
+
+    background: white;
+
+    color: var(--red);
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+
+/* =========================================
+   OTHER NEWSLETTERS
+========================================= */
+
+.other-newsletters {
+
+    padding: 0 24px 20px;
+
+    border-bottom:
+        1px
+        solid
+        #e5dfda;
+}
+
+.other-newsletters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* space on left and right */
+    padding: 22px 28px;
+
+    margin: 10px 0;
+
+    border-top: 1px solid #e7e1dc;
+    border-bottom: 1px solid #e7e1dc;
+}
+
+.other-newsletters-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.other-newsletters h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #111317;
+    font-family: var(--font-newsletter);
+}
+
+.view-all {
+    color: #d91f26;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+
+/* Transparent feedback button */
+
+.newsletter-feedback-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 16px;
+
+    background: transparent;
+    color: #d91f26;
+
+    border: 1px solid #d91f26;
+    border-radius: 4px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.newsletter-feedback-btn:hover {
+    background: #fff2f0;
+    color: #c81920;
+}
+
+
+.other-title {
+    margin-top :14px;
+
+    margin-bottom: 14px;
+
+    color: var(--red);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.other-grid {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.other-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #444;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.other-item i {
+
+    width: 18px;
+
+    color: #E31E24;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+.other-see-all {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin-left: auto;
+
+    color: #E31E24;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+/* .footer {
+
+    padding:
+        15px
+        25px
+        8px;
+} */
+
+
+/* .footer-main {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+} */
+
+/* 
+.footer-description {
+
+    flex: 1;
+
+    max-width: 520px;
+
+    font-size: 10px;
+
+    line-height: 1.55;
+} */
+
+
+/* .social-icons {
+
+    display: flex;
+
+    gap: 13px;
+} */
+
+
+/* .social-icons a {
+
+    width: 28px;
+
+    height: 28px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    color: white;
+
+    font-family: var(--font-newsletter);
+
+    font-size: 13px;
+
+    font-weight: bold;
+} */
+
+/* 
+/* .footer-bottom {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 12px;
+
+    color: gray;
+
+    font-size: 10px;
+
+    font-weight: 800;
+} */ 
+
+
+
+/* .footer-bottom span {
+
+    color: #999;
+} */
+
+
+/* ================================
+   NBT NEWSLETTER FOOTER
+================================ */
+
+.nbt-footer {
+  width: 100%;
+  background: #ffffff;
+  color: #202b38;
+  font-family: Arial, "Noto Sans Devanagari", sans-serif;
+}
+
+
+/* ================================
+   TOP SECTION
+================================ */
+
+.footer-main {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  min-height: 390px;
+
+  display: grid;
+  grid-template-columns:
+    1fr
+    1px
+    2fr
+    1px
+    1.2fr;
+
+  align-items: center;
+
+  column-gap: 42px;
+}
+
+
+/* ================================
+   NBT BRAND
+================================ */
+
+.footer-brand {
+  text-align: center;
+}
+
+.nbt-logo {
+  display: inline-block;
+
+  background: #ed1c24;
+  color: #ffffff;
+
+  font-size: 58px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  padding: 8px 12px 4px;
+
+  letter-spacing: -3px;
+}
+
+/* The logo lockup that replaced the .nbt-logo / .nbt-name text pair.
+   .nbt-logo and .nbt-name are kept above so the text mark can be
+   restored by swapping the markup back in Footer.tsx. */
+.nbt-logo-link {
+  display: inline-block;
+
+  line-height: 0;
+}
+
+.nbt-logo-img {
+  width: 250px;
+
+  max-width: 100%;
+  height: auto;
+}
+
+.nbt-name {
+  margin-top: 8px;
+
+  font-size: 32px;
+  font-weight: 800;
+
+  color: #151d27;
+
+  white-space: nowrap;
+}
+
+.nbt-tagline {
+  margin-top: 12px;
+
+  font-size: 21px;
+
+  color: #5c6875;
+}
+
+
+/* ================================
+   DIVIDERS
+================================ */
+
+.footer-divider {
+  width: 1px;
+  height: 270px;
+
+  background: #d8d8d8;
+}
+
+
+/* ================================
+   APP DOWNLOAD
+================================ */
+
+.footer-app {
+  padding-left: 10px;
+}
+
+.app-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.app-heading h2 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 800;
+
+  color: #202b38;
+}
+
+.app-heading-icon {
+  font-size: 42px;
+  color: #ed1c24;
+}
+
+.footer-app p {
+  margin: 14px 0 25px;
+
+  font-size: 21px;
+  line-height: 1.5;
+
+  color: #56616d;
+}
+
+
+/* ================================
+   STORE BUTTONS
+================================ */
+
+.store-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.store-button {
+  width: 210px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 8px 16px;
+
+  background: #050505;
+  color: #ffffff;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  transition: transform 0.2s ease;
+}
+
+.store-button:hover {
+  transform: translateY(-2px);
+}
+
+.store-icon {
+  font-size: 36px;
+}
+
+.store-icon.google {
+  color: #ffffff;
+}
+
+.store-icon.apple {
+  color: #ffffff;
+}
+
+.store-small {
+  display: block;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  color: #ffffff;
+}
+
+.store-large {
+  display: block;
+
+  font-size: 24px;
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+
+/* ================================
+   SOCIAL
+================================ */
+
+.footer-social {
+  padding-left: 8px;
+}
+
+.footer-social h2 {
+  margin: 0 0 25px;
+
+  font-size: 32px;
+  font-weight: 800;
+
+  color: #202b38;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+
+  align-items: center;
+}
+
+.social-icon {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 25px;
+
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+
+.youtube {
+  background: #ed1c24;
+}
+
+.x-twitter {
+  background: #050505;
+}
+
+.facebook {
+  background: #1877f2;
+}
+
+.instagram {
+  background:
+    linear-gradient(
+      135deg,
+      #833ab4,
+      #fd1d1d,
+      #fcb045
+    );
+}
+
+.whatsapp {
+  background: #25d366;
+}
+
+.social-handle {
+  margin-top: 20px;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #202b38;
+}
+
+
+/* ================================
+   BOTTOM SECTION
+================================ */
+
+.footer-bottom-wrapper {
+  border-top: 1px solid #dedede;
+
+  width: 92%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 28px 0 24px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+}
+
+
+/* ================================
+   BOTTOM LINKS
+================================ */
+
+.footer-link {
+  color: #69737d;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+.footer-link:hover {
+  color: #ed1c24;
+}
+
+.newsletter-link {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: #202b38;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.newsletter-link svg {
+  font-size: 25px;
+}
+
+.bottom-separator {
+  color: #b8b8b8;
+
+  font-size: 22px;
+}
+
+
+/* ================================
+   FEEDBACK BUTTON
+================================ */
+
+.feedback-button {
+  margin-left: auto;
+
+  height: 52px;
+
+  padding: 0 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 2px solid #ed1c24;
+  border-radius: 30px;
+
+  color: #ed1c24;
+
+  background: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.feedback-button:hover {
+  background: #ed1c24;
+  color: #ffffff;
+}
+
+
+/* ================================
+   COPYRIGHT
+================================ */
+
+.copyright {
+  text-align: center;
+
+  margin-top: 28px;
+
+  color: #5d6874;
+
+  font-size: 16px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    row-gap: 35px;
+
+    padding: 45px 0;
+  }
+
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .footer-brand,
+  .footer-app,
+  .footer-social {
+    text-align: center;
+    padding: 0;
+  }
+
+  .app-heading {
+    justify-content: center;
+  }
+
+  .store-buttons {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .feedback-button {
+    margin-left: 0;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .footer-main {
+    width: 90%;
+  }
+
+  .nbt-logo {
+    font-size: 46px;
+  }
+
+  .nbt-logo-img {
+    width: 200px;
+  }
+
+  .nbt-name {
+    font-size: 25px;
+  }
+
+  .nbt-tagline {
+    font-size: 17px;
+  }
+
+  .app-heading h2 {
+    font-size: 25px;
+  }
+
+  .app-heading-icon {
+    font-size: 32px;
+  }
+
+  .footer-app p {
+    font-size: 17px;
+  }
+
+  .store-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .store-button {
+    width: 220px;
+  }
+
+  .footer-social h2 {
+    font-size: 26px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .bottom-separator {
+    display: none;
+  }
+
+  .feedback-button {
+    width: 200px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 0;
+    }
+
+
+    .newsletter {
+
+        border: 0;
+
+        box-shadow: none;
+    }
+
+
+    /* header */
+
+    .masthead {
+
+        padding:
+            18px
+            16px
+            14px;
+    }
+
+
+    .logo {
+
+        font-size: 34px;
+
+        line-height: 31px;
+
+        border-width: 4px;
+    }
+
+
+    .newsletter-title {
+
+        font-size: 22px;
+    }
+
+
+    .newsletter-bar {
+
+        padding: 12px 16px 8px;
+    }
+
+
+    .newsletter-date {
+
+        font-size: 12px;
+    }
+
+
+    .tagline {
+
+        font-size: 10px;
+    }
+
+
+    .meta {
+
+        font-size: 9px;
+
+        line-height: 1.8;
+    }
+
+
+    .red-line {
+
+        margin: 0 16px;
+    }
+
+
+
+    /* greeting */
+
+    .greeting {
+
+        padding:
+            16px;
+
+        gap: 10px;
+
+        align-items: flex-start;
+    }
+
+
+    .user-avatar {
+
+        width: 45px;
+
+        height: 45px;
+
+        min-width: 45px;
+    }
+
+
+    .avatar-head {
+
+        width: 11px;
+
+        height: 11px;
+
+        top: 8px;
+
+        left: 15px;
+    }
+
+
+    .avatar-body {
+
+        width: 23px;
+
+        height: 13px;
+
+        left: 10px;
+
+        bottom: 8px;
+    }
+
+
+    .greeting-content h2 {
+
+        font-size: 17px;
+    }
+
+
+    .greeting-content p {
+
+        font-size: 10px;
+    }
+
+
+    .preference-box {
+
+        min-width: 110px;
+
+        padding:
+            8px
+            9px;
+
+        gap: 7px;
+    }
+
+
+    .preference-heart {
+
+        font-size: 25px;
+    }
+
+
+    .preference-box span {
+
+        font-size: 8px;
+    }
+
+
+    .preference-box strong {
+
+        font-size: 11px;
+    }
+
+
+
+    /* topic */
+
+    .topic-banner {
+
+        height: 145px;
+    }
+
+
+    .topic-content {
+
+        padding:
+            20px
+            16px;
+    }
+
+
+    .topic-content h1 {
+
+        font-size: 27px;
+    }
+
+
+
+    /* hero */
+
+    .hero-section {
+
+        grid-template-columns: 1fr;
+
+        padding:
+            0
+            16px
+            12px;
+
+        gap: 0;
+    }
+
+
+    .hero-section .section-label {
+
+        order: 1;
+    }
+
+
+    .hero-section .hero-image-wrapper {
+
+        order: 1;
+    }
+
+
+    .hero-text h2 {
+
+        order: 2;
+
+        font-size: 21px;
+    }
+
+
+    .hero-section .story-author {
+
+        order: 3;
+    }
+
+
+    .hero-text p {
+
+        order: 4;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    .hero-section .red-link {
+
+        order: 5;
+
+        display: inline-block;
+
+        margin-top: 8px;
+
+        font-size: 13px;
+    }
+
+
+    .hero-image {
+
+        height: auto;
+    }
+
+
+    .top-podcast {
+
+        margin:
+            0
+            16px
+            20px;
+    }
+
+
+    .top-podcast-thumb {
+
+        height: auto;
+    }
+
+
+
+    /* why */
+
+    .why-section {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        margin:
+            0
+            16px
+            15px;
+    }
+
+
+    .why-title {
+
+        grid-column: 1 / -1;
+
+        border-right: 0;
+
+        border-bottom:
+            1px
+            solid
+            #f0d8d4;
+    }
+
+
+    .why-item {
+
+        padding: 12px;
+    }
+
+
+    .why-item:nth-child(2) {
+
+        border-right: 0;
+    }
+
+
+
+    /* news */
+
+    .selected-news {
+
+        padding:
+            0
+            16px
+            18px;
+    }
+
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 9px;
+    }
+
+
+    .news-card {
+
+        padding: 18px 0;
+    }
+
+
+    .news-card img {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    .news-card h3 {
+
+        font-size: 21px;
+
+        line-height: 1.4;
+    }
+
+
+    .news-content p {
+
+        color: var(--black);
+
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+
+    /* recommendations */
+
+    .recommendation {
+
+        margin:
+            0
+            16px
+            14px;
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .topic-chips {
+
+        margin-left: 0;
+
+        justify-content: flex-start;
+    }
+
+
+
+    /* insight */
+
+    .insight-section {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .feedback-section {
+
+        border-left: 0;
+
+        border-top:
+            1px
+            solid
+            #e5dfda;
+    }
+
+
+    .hook-box {
+
+        margin-top: 18px;
+
+        padding: 18px 16px;
+    }
+
+
+    .hook-question {
+
+        font-size: 18px;
+    }
+
+
+    .poll-options {
+
+        gap: 8px;
+    }
+
+
+    .poll-option {
+
+        width: 100%;
+
+        justify-content: flex-start;
+
+        font-size: 12px;
+    }
+
+
+    .poll-options.voted .poll-option {
+
+        min-width: 0;
+    }
+
+
+
+    /* other */
+
+    .other-newsletters {
+
+        padding:
+            0
+            16px
+            12px;
+    }
+
+
+    .newsletter-categories {
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+
+
+    /* footer */
+
+    .footer {
+
+        padding:
+            15px
+            16px
+            8px;
+    }
+
+
+    .footer-main {
+
+        align-items: center;
+
+        flex-direction: row;
+
+        gap: 20px;
+    }
+
+
+    .footer-description {
+
+        min-width: 0;
+
+        max-width: none;
+    }
+
+
+    .social-icons {
+
+        margin-left: 0;
+    }
+
+}
+/* =========================================
+   NBT NEWSLETTER FOOTER
+   Lives inside .newsletter (max-width: 600px), so the three-column
+   composition is tuned to ~562px of content width and uses the
+   newsletter type scale rather than a full-bleed desktop scale.
+========================================= */
+
+.nbt-footer {
+    width: 100%;
+
+    background: var(--white);
+    color: var(--black);
+
+    font-family: var(--font-newsletter);
+}
+
+
+/* -----------------------------------------
+   TOP SECTION - brand | app download | social
+----------------------------------------- */
+
+.nbt-footer-main {
+    display: grid;
+    grid-template-columns: 0.85fr 1.6fr 1.15fr;
+    align-items: stretch;
+
+    column-gap: 14px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 16px 18px;
+}
+
+.nbt-footer-main > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+}
+
+/* The two thin vertical dividers between the three columns. */
+.nbt-footer-download,
+.nbt-footer-follow {
+    border-left: 1px solid var(--light-gray);
+
+    padding-left: 14px;
+}
+
+
+/* -----------------------------------------
+   LEFT - NBT brand
+----------------------------------------- */
+
+.nbt-footer-brand {
+    align-items: center;
+
+    text-align: center;
+}
+
+.nbt-footer-logo-link {
+    display: block;
+
+    line-height: 0;
+
+    text-decoration: none;
+}
+
+.nbt-footer-logo {
+    display: block;
+
+    width: 100%;
+    max-width: 118px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+/* Gradient-only <svg>: without this it renders at the 300x150 default
+   intrinsic size and pads the footer with dead vertical space. */
+.nbt-svg-defs {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    overflow: hidden;
+}
+
+.nbt-footer-mark {
+    display: inline-flex;
+    gap: 4px;
+
+    text-decoration: none;
+}
+
+.nbt-footer-mark span {
+    display: grid;
+    place-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    background: var(--red);
+    color: var(--white);
+
+    border-radius: 3px;
+
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.nbt-footer-name {
+    margin: 10px 0 0;
+
+    color: var(--black);
+
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.nbt-footer-tagline {
+    margin: 4px 0 0;
+
+    color: var(--gray);
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* -----------------------------------------
+   CENTER - app download
+----------------------------------------- */
+
+.nbt-footer-download h2,
+.nbt-footer-follow h2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin: 0;
+
+    color: var(--black);
+
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.nbt-footer-heading-icon {
+    flex: none;
+
+    color: var(--red);
+
+    font-size: 13px;
+}
+
+.nbt-footer-download p {
+    margin: 5px 0 9px;
+
+    color: var(--gray);
+
+    font-size: 10.5px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.nbt-store-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.nbt-store-button {
+    display: flex;
+    flex: 1 1 92px;
+    align-items: center;
+    gap: 5px;
+
+    min-width: 0;
+
+    padding: 6px 7px;
+
+    background: var(--white);
+    color: var(--black);
+
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+
+    text-decoration: none;
+}
+
+/* Google Play keeps its four-stop brand gradient - this is what the
+   <linearGradient id="nbt-play-gradient"> in Footer.tsx exists for.
+   `fill` on the element beats react-icons' fill="currentColor" attribute. */
+.nbt-store-google svg {
+    fill: url(#nbt-play-gradient);
+}
+
+/* Apple's mark is monochrome; #111317 is its own colour, not the slab. */
+.nbt-store-apple svg {
+    color: #111317;
+}
+
+.nbt-store-button svg {
+    flex: none;
+
+    font-size: 15px;
+}
+
+.nbt-store-button span {
+    display: block;
+
+    min-width: 0;
+
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1.15;
+
+    white-space: nowrap;
+}
+
+.nbt-store-button small {
+    display: block;
+
+    font-size: 6.5px;
+    font-weight: 600;
+    line-height: 1.2;
+
+    letter-spacing: 0.04em;
+}
+
+.nbt-store-button:hover {
+    background: var(--cream);
+
+    border-color: #d8d8d8;
+}
+
+
+/* -----------------------------------------
+   RIGHT - social
+----------------------------------------- */
+
+.nbt-footer-follow h2 {
+    margin-bottom: 9px;
+}
+
+.nbt-social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.nbt-social-icons a {
+    display: grid;
+    flex: none;
+    place-items: center;
+
+    width: 25px;
+    height: 25px;
+
+    color: var(--white);
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    text-decoration: none;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nbt-social-icons a:hover {
+    transform: translateY(-1px);
+
+    opacity: 0.88;
+}
+
+.nbt-social-icons .nbt-social-youtube {
+    background: #ff0000;
+}
+
+.nbt-social-icons .nbt-social-x {
+    background: #111317;
+}
+
+.nbt-social-icons .nbt-social-facebook {
+    background: #1877f2;
+}
+
+/* The Instagram badge is multicolour in the reference. */
+.nbt-social-icons .nbt-social-instagram {
+    background: radial-gradient(circle at 28% 104%,
+            #fdf497 0%,
+            #fd5949 45%,
+            #d6249f 65%,
+            #285aeb 95%);
+}
+
+.nbt-social-icons .nbt-social-whatsapp {
+    background: #25d366;
+}
+
+.nbt-footer-handle {
+    margin: 8px 0 0;
+
+    color: var(--black);
+
+    font-size: 10.5px;
+    font-weight: 700;
+}
+
+
+/* -----------------------------------------
+   HORIZONTAL DIVIDER
+----------------------------------------- */
+
+.nbt-footer-rule {
+    max-width: 1164px;
+
+    margin: 0 18px;
+
+    border: 0;
+    border-top: 1px solid var(--light-gray);
+}
+
+
+/* -----------------------------------------
+   BOTTOM ROW - links | feedback
+----------------------------------------- */
+
+.nbt-footer-lower {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 9px 18px;
+}
+
+.nbt-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    min-width: 0;
+}
+
+.nbt-footer-links a {
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.nbt-footer-newsletter {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--black);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.nbt-footer-newsletter svg {
+    flex: none;
+
+    font-size: 12px;
+}
+
+.nbt-footer-muted {
+    color: var(--gray);
+
+    font-size: 10.5px;
+    font-weight: 600;
+
+    text-decoration: underline;
+    text-decoration-color: #d8d8d8;
+    text-underline-offset: 3px;
+}
+
+.nbt-footer-links a:hover {
+    color: var(--red);
+}
+
+.nbt-footer-sep {
+    flex: none;
+
+    width: 1px;
+    height: 11px;
+
+    background: var(--light-gray);
+}
+
+.nbt-footer-feedback {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 13px;
+
+    background: var(--white);
+    color: var(--red);
+
+    border: 1px solid var(--red);
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nbt-footer-feedback-icon {
+    font-size: 12px;
+}
+
+.nbt-footer-feedback-arrow {
+    font-size: 11px;
+}
+
+.nbt-footer-feedback:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+
+/* -----------------------------------------
+   COPYRIGHT
+----------------------------------------- */
+
+.nbt-footer-copyright {
+    margin: 0;
+
+    padding: 0 18px 14px;
+
+    color: var(--gray);
+
+    font-size: 10px;
+    font-weight: 500;
+
+    text-align: center;
+}
+
+
+/* -----------------------------------------
+   TABLET / MOBILE - same three-column composition as
+   desktop; only the gutters, gaps and badge sizes tighten
+   so the whole footer still fits a phone width.
+----------------------------------------- */
+
+@media (max-width: 599px) {
+    .nbt-footer-main {
+        column-gap: 8px;
+
+        padding: 12px 10px;
+    }
+
+    .nbt-footer-download,
+    .nbt-footer-follow {
+        padding-left: 8px;
+    }
+
+    .nbt-footer-logo {
+        max-width: 84px;
+    }
+
+    .nbt-footer-download p {
+        font-size: 9.5px;
+    }
+
+    .nbt-store-button {
+        padding: 5px 6px;
+    }
+
+    .nbt-social-icons {
+        gap: 4px;
+    }
+
+    .nbt-social-icons a {
+        width: 21px;
+        height: 21px;
+
+        font-size: 10px;
+    }
+
+    .nbt-footer-rule {
+        margin: 0 10px;
+    }
+
+    .nbt-footer-lower {
+        gap: 8px;
+
+        padding: 9px 10px;
+    }
+
+    .nbt-footer-copyright {
+        padding: 0 10px 12px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE HARDENING
+   The layout above is already one fluid column capped at 600px, and every
+   image in it is `width: 100%` with an aspect-ratio — so there is no new
+   desktop breakpoint here. This section only covers what that column does
+   not handle on its own:
+
+     1. content wider than any column — long Latin words and bare URLs in
+        Hindi copy, which `.newsletter { overflow: hidden }` clips silently
+        instead of scrolling
+     2. the four gutters the `max-width: 700px` block never reached, which
+        stayed at the 36px desktop inset while every section around them
+        dropped to 16px
+     3. widths under ~400px, where a 16px gutter plus the 21px headline
+        scale leaves too little room for Devanagari to breathe
+     4. input and motion preferences — tap targets on touch screens,
+        transitions for readers who ask for less movement
+
+   Nothing below applies above 700px except the long-token guards, so the
+   desktop and tablet rendering is unchanged.
+========================================= */
+
+
+/* -----------------------------------------
+   1. LONG TOKENS — every width
+----------------------------------------- */
+
+/* A Latin word or bare URL inside Hindi text offers no break opportunity,
+   so one long token stretches its line past the column and is then cut off
+   by the `overflow: hidden` on `.newsletter` — no scrollbar, just missing
+   text. Article titles and descriptions come from NBT's CDN payload, so
+   this is data we do not control. */
+.daily-summary li,
+.hero-text h2,
+.hero-text p,
+.news-card h3,
+.news-content p,
+.hook-question,
+.poll-label,
+.card-link,
+.red-link,
+.nbt-footer-download p,
+.nbt-footer-handle,
+.nbt-footer-copyright {
+    overflow-wrap: break-word;
+}
+
+/* Grid and flex children default to `min-width: auto`, which refuses to
+   shrink below their content width — the other half of the same problem. */
+.hero-text,
+.news-content,
+.top-story-heading,
+.nbt-footer-links {
+    min-width: 0;
+}
+
+/* The poll row wraps between buttons, but each button sizes to its own
+   content, so a long option label used to overflow the box sideways. */
+.poll-option {
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* The masthead logo is the one fixed-width image in the issue (130px);
+   below a ~150px column it would otherwise push the header wider. */
+.header-logo img {
+    max-width: 100%;
+}
+
+
+/* -----------------------------------------
+   2. <= 700px — the gutters the mobile block missed
+----------------------------------------- */
+
+@media (max-width: 700px) {
+
+    /* `.masthead`, `.newsletter-bar`, `.red-line`, `.hero-section`,
+       `.top-podcast`, `.selected-news` and `.hook-box` are all pulled to a
+       16px gutter above; these three kept their 36px desktop padding and
+       sat visibly inset from everything else. */
+
+    .header-date {
+        padding: 0 16px 10px;
+    }
+
+    .reader-greeting {
+        padding: 0 16px 12px;
+    }
+
+    .daily-summary {
+        margin: 0 16px 18px;
+
+        padding: 14px 16px 12px;
+    }
+}
+
+
+/* -----------------------------------------
+   3. <= 400px — small phones
+   Same composition, tighter: 16px gutters become 12px and the headline
+   scale steps down one notch. No section is restacked or hidden.
+----------------------------------------- */
+
+@media (max-width: 400px) {
+
+    /* issue body */
+
+    .masthead {
+        padding: 14px 12px 12px;
+    }
+
+    .header-logo img {
+        width: 112px;
+    }
+
+    .header-date {
+        padding: 0 12px 8px;
+    }
+
+    .red-line {
+        margin: 0 12px;
+    }
+
+    .reader-greeting {
+        padding: 0 12px 10px;
+
+        font-size: 17px;
+    }
+
+    .daily-summary {
+        margin: 0 12px 16px;
+
+        padding: 12px 13px 10px;
+    }
+
+    .daily-summary h2,
+    .daily-summary h2 svg {
+        font-size: 16px;
+    }
+
+    .daily-summary ul {
+        padding-left: 18px;
+    }
+
+    .daily-summary li {
+        font-size: 14px;
+    }
+
+    .newsletter-bar {
+        padding: 12px 12px 8px;
+    }
+
+    .hero-section {
+        padding: 0 12px 12px;
+    }
+
+    .section-label {
+        font-size: 16px;
+    }
+
+    .hero-text h2 {
+        font-size: 19px;
+    }
+
+    .top-podcast {
+        margin: 0 12px 18px;
+    }
+
+    .selected-news {
+        padding: 0 12px 16px;
+    }
+
+    .selected-news .heading-wrapper h4 {
+        font-size: 16px;
+    }
+
+    .news-card h3 {
+        font-size: 19px;
+    }
+
+    .hook-box {
+        padding: 16px 12px;
+    }
+
+    .hook-question {
+        font-size: 16px;
+    }
+
+
+    /* footer — the three-column composition is deliberate (see the note on
+       the 599px block), so the columns tighten rather than stack. */
+
+    .nbt-footer-main {
+        column-gap: 6px;
+
+        padding: 10px 8px;
+    }
+
+    .nbt-footer-download,
+    .nbt-footer-follow {
+        padding-left: 6px;
+    }
+
+    .nbt-footer-logo {
+        max-width: 70px;
+    }
+
+    .nbt-footer-download h2,
+    .nbt-footer-follow h2 {
+        gap: 4px;
+
+        font-size: 11.5px;
+    }
+
+    .nbt-footer-heading-icon {
+        font-size: 11.5px;
+    }
+
+    .nbt-footer-download p {
+        margin: 4px 0 7px;
+
+        font-size: 9px;
+    }
+
+    /* One store badge per row: at this width half the centre column cannot
+       hold "Google Play" without the nowrap span spilling. */
+    .nbt-store-button {
+        flex: 1 1 100%;
+
+        padding: 5px 6px;
+    }
+
+    .nbt-social-icons {
+        gap: 2px;
+
+        /* Below ~340px the five badges wrap onto a second line; give that
+           line the same breathing room as the first. */
+        row-gap: 3px;
+    }
+
+    .nbt-social-icons a {
+        width: 18px;
+        height: 18px;
+
+        font-size: 9px;
+    }
+
+    .nbt-footer-handle {
+        font-size: 9.5px;
+    }
+
+    .nbt-footer-rule {
+        margin: 0 8px;
+    }
+
+    .nbt-footer-lower {
+        gap: 7px;
+
+        padding: 8px;
+    }
+
+    .nbt-footer-copyright {
+        padding: 0 8px 10px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* -----------------------------------------
+   4. INPUT AND MOTION PREFERENCES
+----------------------------------------- */
+
+/* Touch screens: the poll buttons and the two footer calls to action are
+   the only things on the page meant to be tapped, and at their text size
+   they land around 34px — under the 44px comfortable minimum. */
+@media (hover: none) and (pointer: coarse) {
+    .poll-option {
+        min-height: 44px;
+    }
+
+    .more-news a {
+        padding-block: 12px;
+    }
+
+    .nbt-footer-feedback {
+        min-height: 40px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .poll-option,
+    .poll-bar,
+    .nbt-store-button,
+    .nbt-social-icons a,
+    .nbt-footer-feedback,
+    .nbt-footer-links a {
+        transition: none;
+    }
+
+    .nbt-social-icons a:hover {
+        transform: none;
+    }
+}
