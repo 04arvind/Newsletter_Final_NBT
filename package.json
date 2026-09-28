@@ -13,6 +13,7 @@
     "@google/generative-ai": "^0.24.1",
     "@react-email/components": "^1.0.12",
     "@upstash/redis": "^1.38.4",
+    "@vercel/analytics": "^2.0.1",
     "cheerio": "^1.2.0",
     "dotenv": "^17.4.2",
     "mongodb": "^7.6.0",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Devanagari, Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 /**
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           precedence="default"
         />
         {children}
+         <Analytics />
       </body>
     </html>
   );
