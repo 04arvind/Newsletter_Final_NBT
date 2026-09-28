@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSubscribersCollection } from '../../../lib/db/client'
+import { verifyUnsubscribeToken } from '../../../lib/unsubscribe-token'
 
 export async function POST(req:NextRequest){
     try{
@@ -39,16 +40,37 @@ export async function POST(req:NextRequest){
     }
 }
 
-//  one click unsubscribe link from emails : /api/unsubscribe?email=...
+//  The page the email link lands on afterwards (src/app/unsubcribe/page.tsx).
+const UNSUBSCRIBED_PAGE_PATH = '/unsubcribe';
+
+//  Where the email link lands afterwards. Set UNSUB_REDIRECT_URL to override it;
+//  otherwise it is the unsubscribed page on NEXT_PUBLIC_APP_URL (e.g.
+//  http://localhost:3000 -> http://localhost:3000/unsubcribe), falling back to
+//  this request's own origin.
+function unsubscribeRedirectUrl(req:NextRequest){
+    const base = (process.env.NEXT_PUBLIC_APP_URL?.trim() || req.nextUrl.origin).replace(/\/+$/,'');
+    return process.env.UNSUB_REDIRECT_URL?.trim() || `${base}${UNSUBSCRIBED_PAGE_PATH}`;
+}
+
+//  one click unsubscribe link from emails : /api/unsubscribe?email=...&token=...
+//  Always redirects, valid token or not, so the link never shows an error page.
 export async function GET(req:NextRequest){
-    const email = req.nextUrl.searchParams.get('email');
-    if(!email){
-        return NextResponse.json({error:'Email required'},{status:400});
+    const email = req.nextUrl.searchParams.get('email')?.trim().toLowerCase();
+    const token = req.nextUrl.searchParams.get('token');
+    try{
+        if(!email || !token || !verifyUnsubscribeToken(email,token)){
+            console.error('Unsubscribe error: invalid token',{email});
+        }
+        else{
+            const subscribers = await getSubscribersCollection();
+            await subscribers.updateOne(
+                {email},
+                {$set:{status:'unsubscribed',unsubscribed:true,unsubscribedAt:new Date()}},
+            )
+        }
     }
-    const subscribers = await getSubscribersCollection();
-    await subscribers.updateOne(
-        {email},
-        {$set:{status:'unsubscribed',unsubscribedAt:new Date()}},
-    )
-    return NextResponse.json({message : 'Unsubscribed'});
+    catch(err){
+        console.error('Unsubscribe error',err);
+    }
+    return NextResponse.redirect(unsubscribeRedirectUrl(req),302);
 }

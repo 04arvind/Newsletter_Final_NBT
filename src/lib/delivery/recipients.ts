@@ -56,7 +56,7 @@ export function testRecipients(): Recipient[] {
 export async function activeSubscribers(): Promise<Recipient[]> {
   const subscribers = await getSubscribersCollection();
   const rows = await subscribers
-    .find({ status: 'active' }, { projection: { email: 1 } })
+    .find({ status: 'active', unsubscribed: { $ne: true } }, { projection: { email: 1 } })
     .toArray();
   return rows.map((row) => ({ email: row.email }));
 }

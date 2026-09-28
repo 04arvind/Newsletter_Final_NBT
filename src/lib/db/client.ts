@@ -27,6 +27,8 @@ export interface Subscriber {
   status: SubscriberStatus;
   subscribedAt: Date;
   unsubscribedAt: Date | null;
+  /** Set by the one-click email unsubscribe link; excluded from every send. */
+  unsubscribed?: boolean;
   /** Every newsletter category this address has subscribed to on the site.
    *  One row per address: picking a second newsletter adds to this list rather
    *  than replacing the subscriber. Absent on rows created before categories

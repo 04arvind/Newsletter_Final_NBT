@@ -134,4 +134,7 @@ export const EMAIL_TOKENS = {
   UNSUBSCRIBE_URL: '{{unsubscribe_url}}',
   /** Must be substituted with a URL-encoded value — it sits in a query string. */
   SUBSCRIBER: '{{subscriber_email}}',
+  /** HMAC of the recipient's address for the unsubscribe link (see
+   *  `src/lib/unsubscribe-token.ts`). Filled in per recipient at send time. */
+  UNSUBSCRIBE_TOKEN: '{{unsubscribe_token}}',
 } as const;

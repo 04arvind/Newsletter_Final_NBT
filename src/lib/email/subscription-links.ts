@@ -61,7 +61,8 @@ export function buildUnsubscribeUrl({
   baseUrl,
   subscriber = EMAIL_TOKENS.SUBSCRIBER,
 }: SubscriptionUrlParams): string {
-  return buildUrl(baseUrl, UNSUBSCRIBE_PATH, subscriber);
+  // The token is signed per recipient at send time (see ./personalize).
+  return `${buildUrl(baseUrl, UNSUBSCRIBE_PATH, subscriber)}&token=${EMAIL_TOKENS.UNSUBSCRIBE_TOKEN}`;
 }
 
 /**

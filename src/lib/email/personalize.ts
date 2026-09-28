@@ -19,6 +19,7 @@
  */
 
 import { EMAIL_TOKENS } from './newsletter-template.types';
+import { createUnsubscribeToken } from '../unsubscribe-token';
 
 export interface PersonalizeParams {
   /** The recipient's address, unencoded. */
@@ -32,7 +33,8 @@ export function personalizeIssueHtml(
   { email, baseUrl }: PersonalizeParams
 ): string {
   const encoded = encodeURIComponent(email);
-  const unsubscribeUrl = `${baseUrl.replace(/\/+$/, '')}/api/unsubscribe?email=${encoded}`;
+  const token = createUnsubscribeToken(email);
+  const unsubscribeUrl = `${baseUrl.replace(/\/+$/, '')}/api/unsubscribe?email=${encoded}&token=${token}`;
 
   // `split`/`join` rather than a regex: the tokens are literals, and this keeps
   // an address containing `$` from being read as a replacement pattern.
@@ -40,5 +42,7 @@ export function personalizeIssueHtml(
     .split(EMAIL_TOKENS.SUBSCRIBER)
     .join(encoded)
     .split(EMAIL_TOKENS.UNSUBSCRIBE_URL)
-    .join(unsubscribeUrl);
+    .join(unsubscribeUrl)
+    .split(EMAIL_TOKENS.UNSUBSCRIBE_TOKEN)
+    .join(token);
 }

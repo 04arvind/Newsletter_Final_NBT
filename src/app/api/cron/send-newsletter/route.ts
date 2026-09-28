@@ -3,6 +3,7 @@ import { getSubscribersCollection, getIssuesCollection } from '../../../../lib/d
 import { composeNewsletter } from "../../../../lib/email/compose";
 import { sendEmail } from "../../../../lib/email/send";
 import { getInternalAppBaseUrl } from "../../../../lib/internal-base-url";
+import { createUnsubscribeToken } from "../../../../lib/unsubscribe-token";
 
 function isAuthorized(req: NextRequest) {
   return req.headers.get('x-cron-secret') === process.env.CRON_SECRET
@@ -41,7 +42,7 @@ export async function GET(req: NextRequest) {
     // 5. Active subscribers only
     const subscribersCollection = await getSubscribersCollection()
     const subscribers = await subscribersCollection
-      .find({ status: 'active' }, { projection: { email: 1 } })
+      .find({ status: 'active', unsubscribed: { $ne: true } }, { projection: { email: 1 } })
       .toArray()
 
     if (!subscribers.length) {
@@ -87,7 +88,7 @@ export async function GET(req: NextRequest) {
             subject: `NBT Newsletter — ${new Date().toLocaleDateString()}`,
             html: html.replace(
               '{{unsubscribe_url}}',
-              `${baseUrl}/api/unsubscribe?email=${encodeURIComponent(sub.email)}`
+              `${baseUrl}/api/unsubscribe?email=${encodeURIComponent(sub.email)}&token=${createUnsubscribeToken(sub.email)}`
             ),
           }).catch((err) => console.error(`Failed to send to ${sub.email}`, err))
         )
